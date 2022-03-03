@@ -12,12 +12,38 @@ namespace BottledNeck
 	public class BottleNeck : BaseUnityPlugin
 	{
 		private const string ModName = "BottledNeck";
-		private const string ModVersion = "0.1.0";
+		private const string ModVersion = "0.1.5";
 		private const string ModGUID = "org.bepinex.plugins.bottledneck";
 
 		public void Awake()
 
 		{
+	
+			Creature PetNeckForever = new("bottledneck", "PetNeckForever")            //add creature
+			{
+				Biome = Heightmap.Biome.None,
+				FoodItems = "NecksTeddy, QueensJam, Eyescream",
+				CanSpawn = true,
+				CanBeTamed = true,
+				SpawnChance = 100,
+				GroupSize = new Range(1, 1),
+				Maximum = 1
+			};
+			PetNeckForever.Drops["NeckTail"].Amount = new Range(1, 2);
+			PetNeckForever.Drops["NeckTail"].DropChance = 50f;
+
+			Creature BabyTarNeck = new("bottledneck", "BabyTarNeck")            //add creature
+			{
+				Biome = Heightmap.Biome.None,
+				CanSpawn = true,
+				CanBeTamed = false,
+				SpawnChance = 100,
+				GroupSize = new Range(1, 2),
+				Maximum = 1
+			};
+			BabyTarNeck.Drops["NeckTail"].Amount = new Range(1, 2);
+			BabyTarNeck.Drops["NeckTail"].DropChance = 50f;
+
 			Creature BabySpiritNeck = new("bottledneck", "BabySpiritNeck")            //add creature
 			{
 				Biome = Heightmap.Biome.None,
@@ -70,8 +96,8 @@ namespace BottledNeck
 			WildFrostNeck.Drops["NeckTail"].DropChance = 100f;
 			WildFrostNeck.Drops["Crystal"].Amount = new Range(1, 2);
 			WildFrostNeck.Drops["Crystal"].DropChance = 100f;
-			WildFrostNeck.Drops["TrophyNeck"].Amount = new Range(1, 2);
-			WildFrostNeck.Drops["TrophyNeck"].DropChance = 50f;
+			WildFrostNeck.Drops["TrophyFrostNeck"].Amount = new Range(1, 2);
+			WildFrostNeck.Drops["TrophyFrostNeck"].DropChance = 50f;
 
 			Creature WildFlameNeck = new("bottledneck", "WildFlameNeck")            //add creature
 			{
@@ -89,8 +115,8 @@ namespace BottledNeck
 			WildFlameNeck.Drops["NeckTail"].DropChance = 100f;
 			WildFlameNeck.Drops["SurtlingCore"].Amount = new Range(1, 2);
 			WildFlameNeck.Drops["SurtlingCore"].DropChance = 100f;
-			WildFlameNeck.Drops["TrophyNeck"].Amount = new Range(1, 2);
-			WildFlameNeck.Drops["TrophyNeck"].DropChance = 50f;
+			WildFlameNeck.Drops["TrophyFlameNeck"].Amount = new Range(1, 2);
+			WildFlameNeck.Drops["TrophyFlameNeck"].DropChance = 50f;
 
 			Creature WildSpiritNeck = new("bottledneck", "WildSpiritNeck")            //add creature
 			{
@@ -102,13 +128,54 @@ namespace BottledNeck
 				GroupSize = new Range(2, 3),
 				CheckSpawnInterval = 300,
 				RequiredWeather = Weather.Rain,
-				SpecificSpawnTime = SpawnTime.Day,
+				SpecificSpawnTime = SpawnTime.Always,
 				Maximum = 3
 			};
 			WildSpiritNeck.Drops["NeckTail"].Amount = new Range(1, 2);
 			WildSpiritNeck.Drops["NeckTail"].DropChance = 100f;
-			WildSpiritNeck.Drops["TrophyNeck"].Amount = new Range(1, 2);
-			WildSpiritNeck.Drops["TrophyNeck"].DropChance = 50f;
+			WildSpiritNeck.Drops["TrophySpiritNeck"].Amount = new Range(1, 2);
+			WildSpiritNeck.Drops["TrophySpiritNeck"].DropChance = 50f;
+
+			Creature WildTarNeck = new("bottledneck", "WildTarNeck")            //add creature
+			{
+				Biome = Heightmap.Biome.Plains,
+				CanSpawn = true,
+				CanBeTamed = true,
+				FoodItems = "NecksTeddy, QueensJam, Eyescream",
+				SpawnChance = 50,
+				GroupSize = new Range(2, 3),
+				CheckSpawnInterval = 300,
+				RequiredWeather = Weather.ClearSkies,
+				SpecificSpawnTime = SpawnTime.Always,
+				Maximum = 3
+			};
+			WildTarNeck.Drops["NeckTail"].Amount = new Range(1, 2);
+			WildTarNeck.Drops["NeckTail"].DropChance = 100f;
+			WildTarNeck.Drops["TrophyTarNeck"].Amount = new Range(1, 2);
+			WildTarNeck.Drops["TrophyTarNeck"].DropChance = 50f;
+			WildTarNeck.Drops["Tar"].Amount = new Range(1, 2);
+			WildTarNeck.Drops["Tar"].DropChance = 50f;
+
+
+			Item TrophyFlameNeck = new("bottledneck", "TrophyFlameNeck");           //add item
+			TrophyFlameNeck.Crafting.Add(CraftingTable.None, 1);
+			TrophyFlameNeck.RequiredItems.Add("SwordCheat", 1);
+			TrophyFlameNeck.CraftAmount = 1;
+
+			Item TrophyFrostNeck = new("bottledneck", "TrophyFrostNeck");           //add item
+			TrophyFrostNeck.Crafting.Add(CraftingTable.None, 1);
+			TrophyFrostNeck.RequiredItems.Add("SwordCheat", 1);
+			TrophyFrostNeck.CraftAmount = 1;
+
+			Item TrophySpiritNeck = new("bottledneck", "TrophySpiritNeck");           //add item
+			TrophySpiritNeck.Crafting.Add(CraftingTable.None, 1);
+			TrophySpiritNeck.RequiredItems.Add("SwordCheat", 1);
+			TrophySpiritNeck.CraftAmount = 1;
+
+			Item TrophyTarNeck = new("bottledneck", "TrophyTarNeck");           //add item
+			TrophyTarNeck.Crafting.Add(CraftingTable.None, 1);
+			TrophyTarNeck.RequiredItems.Add("SwordCheat", 1);
+			TrophyTarNeck.CraftAmount = 1;
 
 			Item NecksTeddy = new("bottledneck", "NecksTeddy");           //add item
 			NecksTeddy.Crafting.Add(CraftingTable.None, 1);
@@ -134,6 +201,11 @@ namespace BottledNeck
 			SummonedNeckHelmet.Crafting.Add(CraftingTable.None, 1);
 			SummonedNeckHelmet.RequiredItems.Add("SwordCheat", 1);
 			SummonedNeckHelmet.CraftAmount = 1;
+
+			Item SummonedNeckTopHat = new("bottledneck", "SummonedNeckTopHat");           //add item
+			SummonedNeckTopHat.Crafting.Add(CraftingTable.None, 1);
+			SummonedNeckTopHat.RequiredItems.Add("SwordCheat", 1);
+			SummonedNeckTopHat.CraftAmount = 1;
 
 			Item SummonedNeckGuard = new("bottledneck", "SummonedNeckGuard");           //add item
 			SummonedNeckGuard.Crafting.Add(CraftingTable.None, 1);
@@ -177,14 +249,16 @@ namespace BottledNeck
 
 			Item BottledNeckBomb = new("bottledneck", "BottledNeckBomb");  //assetbundle name, Asset Name
 			BottledNeckBomb.Crafting.Add(CraftingTable.Workbench, 1);
-			BottledNeckBomb.RequiredItems.Add("TrophyNeck", 1);
-			BottledNeckBomb.RequiredItems.Add("SurtlingCore", 1);
-			BottledNeckBomb.CraftAmount = 1;
+			BottledNeckBomb.RequiredItems.Add("TrophyTarNeck", 1);
+			BottledNeckBomb.RequiredItems.Add("TrophySpiritNeck", 1);
+			BottledNeckBomb.RequiredItems.Add("TrophyFlameNeck", 1);
+			BottledNeckBomb.RequiredItems.Add("TrophyFrostNeck", 1);
+			BottledNeckBomb.CraftAmount = 3;
+
 
 			GameObject BottleNeckProjectile = ItemManager.PrefabManager.RegisterPrefab("bottledneck", "BottleNeckProjectile"); //register projectile
 
-			new Harmony(ModName).PatchAll();
-			
+			new Harmony(ModName).PatchAll();			
 
 		}
 
