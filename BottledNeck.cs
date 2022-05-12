@@ -4,6 +4,8 @@ using UnityEngine;
 using CreatureManager;
 using ServerSync;
 using HarmonyLib;
+using PieceManager;
+
 
 
 namespace BottledNeck
@@ -342,21 +344,38 @@ namespace BottledNeck
 			TastyNeckTail.RequiredItems.Add("NeckTail", 2);
 			TastyNeckTail.CraftAmount = 1;
 
+			BuildPiece WildTarSpawner = new(PiecePrefabManager.RegisterAssetBundle("bottledneck"), "WildTarSpawner", true, "OdinsHollowWand");
+			WildTarSpawner.Name.English("WildTarSpawner");
+			WildTarSpawner.Description.English("A TarNeck Spawner Shroom");
+			WildTarSpawner.RequiredItems.Add("SwordCheat", 1, false);
+
+			BuildPiece WildFlameSpawner = new(PiecePrefabManager.RegisterAssetBundle("bottledneck"), "WildFlameSpawner", true, "OdinsHollowWand");
+			WildFlameSpawner.Name.English("WildFlameSpawner");
+			WildFlameSpawner.Description.English("A FlameNeck Spawner Shroom");
+			WildFlameSpawner.RequiredItems.Add("SwordCheat", 1, false);
+
+			BuildPiece WildFrostSpawner = new(PiecePrefabManager.RegisterAssetBundle("bottledneck"), "WildFrostSpawner", true, "OdinsHollowWand");
+			WildFrostSpawner.Name.English("WildFrostSpawner");
+			WildFrostSpawner.Description.English("A FrostNeck Spawner Shroom");
+			WildFrostSpawner.RequiredItems.Add("SwordCheat", 1, false);
+
+			BuildPiece WildSpiritSpawner = new(PiecePrefabManager.RegisterAssetBundle("bottledneck"), "WildSpiritSpawner", true, "OdinsHollowWand");
+			WildSpiritSpawner.Name.English("WildSpiritSpawner");
+			WildSpiritSpawner.Description.English("A SpiritNeck Spawner Shroom");
+			WildSpiritSpawner.RequiredItems.Add("SwordCheat", 1, false);
+
 
 			GameObject BottleNeckForeverProjectile = ItemManager.PrefabManager.RegisterPrefab("bottledneck", "BottleNeckForeverProjectile"); //register projectile
 
 			GameObject PetNeckForever = ItemManager.PrefabManager.RegisterPrefab("bottledneck", "PetNeckForever"); //register projectile
 
-
 			GameObject BottleNeckProjectile = ItemManager.PrefabManager.RegisterPrefab("bottledneck", "BottleNeckProjectile"); //register projectile
 
 			GameObject PetNeck = ItemManager.PrefabManager.RegisterPrefab("bottledneck", "PetNeck"); //register projectile
 
-
 			new Harmony(ModName).PatchAll();			
 
 		}
-
 
 		[HarmonyPatch(typeof(MonsterAI), nameof(MonsterAI.Start))]
 		static class MonsterAI_Start_Patch
