@@ -14,7 +14,7 @@ namespace BottledNeck
 	public class BottleNeck : BaseUnityPlugin
 	{
 		private const string ModName = "BottledNeck";
-		private const string ModVersion = "0.2.8";
+		private const string ModVersion = "0.2.9";
 		private const string ModGUID = "org.bepinex.plugins.bottledneck";
 
 		public void Awake()
@@ -252,6 +252,16 @@ namespace BottledNeck
 			SummonedNeckCrown.RequiredItems.Add("SwordCheat", 1);
 			SummonedNeckCrown.CraftAmount = 1;
 
+			Item SummonedNeckWarlock = new("bottledneck", "SummonedNeckWarlock");           //add item
+			SummonedNeckWarlock.Crafting.Add(CraftingTable.ArtisanTable, 10);
+			SummonedNeckWarlock.RequiredItems.Add("SwordCheat", 1);
+			SummonedNeckWarlock.CraftAmount = 1;
+
+			Item SummonedNeckNoHat = new("bottledneck", "SummonedNeckNoHat");           //add item
+			SummonedNeckNoHat.Crafting.Add(CraftingTable.ArtisanTable, 10);
+			SummonedNeckNoHat.RequiredItems.Add("SwordCheat", 1);
+			SummonedNeckNoHat.CraftAmount = 1;
+
 			Item SummonedNeckHalo = new("bottledneck", "SummonedNeckHalo");           //add item
 			SummonedNeckHalo.Crafting.Add(CraftingTable.ArtisanTable, 10);
 			SummonedNeckHalo.RequiredItems.Add("SwordCheat", 1);
@@ -375,6 +385,30 @@ namespace BottledNeck
 			NeckTopHat.RequiredUpgradeItems.Add("TrophyFrostNeck", 2);
 			NeckTopHat.CraftAmount = 1;
 
+			Item NeckWarlockHat = new("bottledneck", "NeckWarlockHat");  //assetbundle name, Asset Name
+			NeckWarlockHat.Crafting.Add(CraftingTable.Workbench, 1);
+			NeckWarlockHat.RequiredItems.Add("TrophyTarNeck", 1);
+			NeckWarlockHat.RequiredItems.Add("TrophySpiritNeck", 1);
+			NeckWarlockHat.RequiredItems.Add("TrophyFlameNeck", 1);
+			NeckWarlockHat.RequiredItems.Add("TrophyFrostNeck", 1);
+			NeckWarlockHat.RequiredUpgradeItems.Add("TrophyTarNeck", 2);
+			NeckWarlockHat.RequiredUpgradeItems.Add("TrophySpiritNeck", 2);
+			NeckWarlockHat.RequiredUpgradeItems.Add("TrophyFlameNeck", 2);
+			NeckWarlockHat.RequiredUpgradeItems.Add("TrophyFrostNeck", 2);
+			NeckWarlockHat.CraftAmount = 1;
+
+			Item NeckCudgel = new("bottledneck", "NeckCudgel");  //assetbundle name, Asset Name
+			NeckCudgel.Crafting.Add(CraftingTable.Workbench, 1);
+			NeckCudgel.RequiredItems.Add("TrophyTarNeck", 1);
+			NeckCudgel.RequiredItems.Add("TrophySpiritNeck", 1);
+			NeckCudgel.RequiredItems.Add("TrophyFlameNeck", 1);
+			NeckCudgel.RequiredItems.Add("TrophyFrostNeck", 1);
+			NeckCudgel.RequiredUpgradeItems.Add("TrophyTarNeck", 2);
+			NeckCudgel.RequiredUpgradeItems.Add("TrophySpiritNeck", 2);
+			NeckCudgel.RequiredUpgradeItems.Add("TrophyFlameNeck", 2);
+			NeckCudgel.RequiredUpgradeItems.Add("TrophyFrostNeck", 2);
+			NeckCudgel.CraftAmount = 1;
+
 			Item TastyNeckTail = new("bottledneck", "TastyNeckTail");  //assetbundle name, Asset Name
 			TastyNeckTail.Crafting.Add(CraftingTable.Cauldron, 1);
 			TastyNeckTail.RequiredItems.Add("NeckTail", 2);
@@ -399,6 +433,14 @@ namespace BottledNeck
 			WildSpiritSpawner.Name.English("WildSpiritSpawner");
 			WildSpiritSpawner.Description.English("A SpiritNeck Spawner Shroom");
 			WildSpiritSpawner.RequiredItems.Add("SwordCheat", 1, false);
+
+			BuildPiece DancingNeckFriend = new("bottledneck", "DancingNeckFriend");
+			DancingNeckFriend.Name.English("Dancing Neck Friend");
+			DancingNeckFriend.Description.English("Dance Dance Dance!");
+			DancingNeckFriend.RequiredItems.Add("TrophyFlameNeck", 1, true);
+			DancingNeckFriend.RequiredItems.Add("TrophyFrostNeck", 1, true);
+			DancingNeckFriend.RequiredItems.Add("TrophySpiritNeck", 1, true);
+			DancingNeckFriend.RequiredItems.Add("TrophyTarNeck", 1, true);
 
 
 			GameObject BottleNeckForeverProjectile = ItemManager.PrefabManager.RegisterPrefab("bottledneck", "BottleNeckForeverProjectile"); //register projectile
